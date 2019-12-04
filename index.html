@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大屏系统</title>
+    <link rel="stylesheet" href="data/css/index.css">
+    <script type="text/javascript" src="data/js/jquery-3.1.1.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back" style="width:100%;height:100%;">
+        <div class="topTitle">
+            <div style="width:10%;text-align:center;background-color:rgb(61,129,212);">手术排班</div>
+            <div id="cg"></div>
+        </div>
+        <div>
+            <div class="ListBack">
+                <!-- <div style="width:20%;">123</div>
+                <div style="width:20%;">123</div>
+                <div style="width:40%;">123</div>
+                <div style="width:10%;">123</div>
+                <div style="width:20%;">123</div> -->
+            </div>
+            <div class="content">
+                <!-- <div class="colum">
+
+                </div> -->
+            </div>
+        </div>
+        <div class="botom">
+            <div class="contentDiv">
+                <div class="botomContent">123132132</div>
+            </div>
+            <div class="botomRight">公告</div>
+        </div>
+    </div>
+</body>
+<script src="data/js/index.js"></script>
+<script>
+    setInterval("cg.innerHTML='星期'+new Date().getDay()+'&nbsp;&nbsp;'+new Date().toLocaleString()", 1000);
+
+</script>
+
+</html>

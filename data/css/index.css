@@ -1,0 +1,116 @@
+.back{
+    background:url('../img/BoxBack.jpg') no-repeat;
+    background-size: cover;
+}
+
+.topTitle{
+    height: 4vw;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 4vw;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+
+
+}
+
+#cg{
+    background:url('../img/polygon.png') no-repeat center;
+    background-size:100% 100%; 
+    text-align: right;
+    width:90%;
+    padding-right: 15px;
+}
+
+.ListBack{
+    width:100%;
+    height: 3vw;
+    /* border:1px solid red; */
+    display:flex;
+    background:url('../img/titleBack.png') no-repeat center;
+    background-size:100% 100%; 
+    font-weight: bold;
+    font-size: 1.2vw;
+    line-height: 3vw;
+
+}
+
+.content{
+    width:100%;
+    /* height: 3vw; */
+}
+.colum{
+    display: flex;
+    width:100%;
+    text-align: center;
+    height: 3vw;
+    line-height: 3vw;
+    border-bottom: 1px solid rgb(79,114,160);
+}
+
+.colum:nth-child(odd){
+    background-color: rgb(54,97,148);
+    color: #fff;
+}
+
+.ListBack div{
+    text-align: center;
+    /* line-height: 3vw; */
+}
+
+.botom{
+    text-align:right;
+    position:fixed;
+    bottom:0;
+    /* background-color:dimgray; */
+    width:100%;
+    height:4vw;
+    font-size:1.2vw;
+    line-height: 4vw;
+    background-color:rgb(61,129,212);
+}
+
+.contentDiv{
+    background-color:rgb(70,91,141);
+    width:100%;
+    height:3vw;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 1.5vw);
+}
+
+.botomContent{
+    position: absolute;
+    right: -100px;
+    line-height: 3vw;
+    animation: neon 10s ease-in-out infinite;
+    color: #fff;
+}
+@keyframes neon{
+    from {
+        right: -100px;
+    }
+    to {
+        right: 120%;
+    }
+  }
+
+.botomRight{
+    position: absolute;
+    right: 0;
+    height: 4vw;
+    width: 10vw;
+    text-align: center;
+    background:url('../img/tel.png') no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-weight: bold;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 2vw;
+    position:absolute;
+    right: 0;
+}
+
