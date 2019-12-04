@@ -41,7 +41,9 @@
         </div>
         <div class="botom">
             <div class="contentDiv">
-                <div class="botomContent">123132132</div>
+                <div class="moveBox">
+                    <!-- <div class="botomContent"></div> -->
+                </div>
             </div>
             <div class="botomRight">公告</div>
         </div>
@@ -49,8 +51,8 @@
 </body>
 <script src="data/js/index.js"></script>
 <script>
-    setInterval("cg.innerHTML='星期'+new Date().getDay()+'&nbsp;&nbsp;'+new Date().toLocaleString()", 1000);
-
+    $('#cg').html('星期'+new Date().getDay()+'&nbsp;&nbsp;'+new Date().toLocaleString());
+    var nowTime = setInterval("cg.innerHTML='星期'+new Date().getDay()+'&nbsp;&nbsp;'+new Date().toLocaleString()", 1000);
 </script>
 
 </html>

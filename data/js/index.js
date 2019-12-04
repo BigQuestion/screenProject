@@ -1,8 +1,10 @@
+var path = 'http://localhost:8088/backsystem/rest/';
 var titleData = '';
-asd();
-function asd(params) {
+getTitleName();
+function getTitleName(params) {
+    // 获取表头
     $.ajax({
-        url: 'http://localhost:8088/backsystem/rest/screen/getScreenOperField',
+        url: path + 'screen/getScreenOperField',
         type: 'post',
         dataType: 'json',
         headers: {
@@ -21,9 +23,6 @@ function asd(params) {
                 innerHTML += '<div style="width:20%;">' + data.data.rows[a].colunmName + '</div>';
             }
             $('.ListBack').html(innerHTML);
-            // $('.botomContent').animate({
-            //     right: "-100px",
-            // });
         } else {
             alert('获取数据失败');
         }
@@ -32,8 +31,9 @@ function asd(params) {
 var firstFun = true;
 content();
 function content() {
+    // 获取表格内容并定时循环翻页
     $.ajax({
-        url: 'http://localhost:8088/backsystem/rest/screen/getScreenData',
+        url: path + 'screen/getScreenData',
         type: 'post',
         dataType: 'json',
         headers: {
@@ -47,11 +47,8 @@ function content() {
         if (data.code == '200') {
             // console.log(data);
             var pageNum = 1; //当前显示页数
-            var showNum = 4; //当前页数显示几条数据
-            var pageTotal = Math.ceil(data.data.rows.length / showNum); //总页数
-            // console.log(pageTotal)
-            // console.log(data.data.rows.length)
-            data.data.rows = [{
+            var showNum = 8; //当前页数显示几条数据
+            var copyData = [{
                 "PATIENT_ID": "4714439",
                 "VISIT_ID": "1",
                 "SCHEDULE_ID": "69662049",
@@ -335,14 +332,18 @@ function content() {
                 "OPER_STATUS": 0,
                 "PAT_AGE": 80
             },]
+            var pageTotal = Math.ceil(data.data.rows.length / showNum); //总页数
+            // console.log(pageTotal)
+            // console.log(data.data.rows.length)
+
             if (firstFun == true) {
                 firCont();
             }
             function firCont() {
                 firstFun = false;
                 var innerHTML = '';
-                console.log(pageNum * showNum - showNum)
-                console.log(pageNum * showNum)
+                // console.log(pageNum * showNum - showNum)
+                // console.log(pageNum * showNum)
                 var startNum = pageNum * showNum - showNum;
                 var endNum = pageNum * showNum;
                 for (var i = startNum; i < endNum; i++) {
@@ -360,17 +361,61 @@ function content() {
                 }
                 $('.content').html(innerHTML);
                 if (pageNum == pageTotal) {
-                    clearInterval(tea);
+                    clearInterval(forUpdate);
                     pageNum = 1;
                     content();
                 } else {
                     pageNum++;
                 }
             }
-            var tea = setInterval(function () {
+            var forUpdate = setInterval(function () {
                 firCont();
             }, 6000);
 
+        } else {
+            alert('获取数据失败');
+        }
+    });
+}
+// function animateFun(){
+//     $('.botomContent').animate({
+//         right: "120%",
+//     },10000);
+// }
+getNotice();
+function getNotice() {
+    // 获取公告内容
+    $.ajax({
+        url: path + 'screen/getScreenNotice',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'Content-type': 'application/json',
+            'Accept': '*/*'
+        },
+    }).always(function (data) {
+        if (data.code == '200') {
+            console.log(data);
+            var innerHTML = '';
+            
+            var widthMultiple = 1;
+            for (var i = 0; i < data.data.rows.length; i++) {
+                for (var cont = 0; cont < data.data.rows[i].noticeCount; cont++) {
+                    widthMultiple++
+                }
+            }
+            $('.moveBox').css({ "right":  -100*(widthMultiple - 1)+'%'});
+            $('.moveBox').width($('.contentDiv').width() * (widthMultiple - 1))
+            for (var i = 0; i < data.data.rows.length; i++) {
+                for (var cont = 0; cont < data.data.rows[i].noticeCount; cont++) {
+                    innerHTML += '<div class="botomContent">' + data.data.rows[i].noticeContent + '</div>'
+                }
+            }
+            console.log(widthMultiple-1)
+            $('.moveBox').html(innerHTML);
+            $('.moveBox').animate({
+                right: $('.contentDiv').width()+'px',
+            }, 4000 * (widthMultiple - 1), 'linear',getNotice);
         } else {
             alert('获取数据失败');
         }

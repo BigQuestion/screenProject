@@ -81,21 +81,33 @@
     top: calc(50% - 1.5vw);
 }
 
-.botomContent{
+.moveBox{
     position: absolute;
-    right: -100px;
+    right: 0px;
+    height: 3vw;
+    display: flex;
+    width: auto;
+  }
+
+.botomContent{
+    /* position: absolute; */
+    /* right: 0px; */
     line-height: 3vw;
-    animation: neon 10s ease-in-out infinite;
+    width: 100%;
+    text-align: left;
+    /* animation: neon 10s ease-in-out infinite; */
     color: #fff;
 }
-@keyframes neon{
+/* @keyframes neon{
     from {
         right: -100px;
     }
     to {
         right: 120%;
     }
-  }
+  } */
+
+
 
 .botomRight{
     position: absolute;
